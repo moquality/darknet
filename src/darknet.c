@@ -368,6 +368,7 @@ int main(int argc, char **argv)
     gpu_index = -1;
 #else
     if(gpu_index >= 0){
+        fprintf(stderr, "Setting gpu_index to  %d\n", gpu_index);
         cuda_set_device(gpu_index);
     }
 #endif

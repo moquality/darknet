@@ -149,8 +149,8 @@ image save_reconstruction(network net, image *init, float *feat, char *name, int
 
 void generate_vid_rnn(char *cfgfile, char *weightfile)
 {
-    network extractor = parse_network_cfg("cfg/extractor.recon.cfg");
-    load_weights(&extractor, "/home/pjreddie/trained/yolo-coco.conv");
+    network extractor = parse_network_cfg("cfg/yolo-voc.cfg");
+    load_weights(&extractor, "./backup_2.5_centered/yolo-voc_35000.weights");
 
     network net = parse_network_cfg(cfgfile);
     if(weightfile){
@@ -160,7 +160,7 @@ void generate_vid_rnn(char *cfgfile, char *weightfile)
     set_batch_network(&net, 1);
 
     int i;
-    CvCapture *cap = cvCaptureFromFile("/extra/vid/ILSVRC2015/Data/VID/snippets/val/ILSVRC2015_val_00007030.mp4");
+    CvCapture *cap = cvCaptureFromFile("floppy3.mp4");
     float *feat;
     float *next;
     image last;
